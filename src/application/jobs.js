@@ -38,6 +38,7 @@ const jobs = [
     return res.status(200).json(jobs);
   };
   
+  
   export const createJob = (req, res) => {
     const job = req.body;
     jobs.push(job);
