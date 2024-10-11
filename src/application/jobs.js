@@ -1,3 +1,8 @@
+import  Job  from "../persistance/entity/jobs.js";
+
+
+
+
 const jobs = [
     {
       _id: "xyz",
@@ -35,14 +40,23 @@ const jobs = [
     },
   ];
   
-  export const getAllJobs = (req, res) => {
-    return res.status(200).json(jobs);
+  export const getAllJobs = async (req, res) => {
+    
+    const allJobs = await Job.find()
+
+
+    return res.status(200).json(allJobs);
   };
   
   
-  export const createJob = (req, res) => {
-    const job = req.body;
-    jobs.push(job);
-  
-    return res.status(201).send();
+  export const createJob = async (req, res) => {
+    try{
+      const job = req.body;
+      await Job.create(job);
+      return res.status(201).send();
+    }catch(error){
+     console.log(error);
+    
+      
+    }
   };
