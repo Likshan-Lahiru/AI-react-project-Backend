@@ -1,7 +1,7 @@
 import express from "express";
 import jobsRouter from "./api/jobs.js";
 import "dotenv/config"
-import { connectionDB } from "../db.js";
+import { connectionDB } from "./persistance/db.js";
 
 
 const app = express();

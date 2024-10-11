@@ -2,6 +2,7 @@ const jobs = [
     {
       _id: "xyz",
       title: "Intern - Software Engineer",
+      description: "lorem",
       type: "Full-time",
       location: "Remote",
       questions: [
