@@ -8,7 +8,7 @@ export const getAllJobApplications = async (req, res, next) => {
       .exec();
     return res.status(200).json(jobApplications);
   } catch (error) {
-    
+    return res.status(500).json("Internal server error");
   }
 };
 
@@ -20,5 +20,6 @@ export const createJobApplication = async (req, res, next) => {
     }
     catch(error){
       console.log(error);
+      return res.status(500).json("Internal server error");
     }
 };
