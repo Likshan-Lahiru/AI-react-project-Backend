@@ -1,7 +1,9 @@
 import express from "express";
-const jobsApplicationRouter = express.Router();
+import { createJobApplication, getAllJobApplications } from "../application/jobsApplication.js";
 
 
-jobsApplicationRouter.route("/");
+const jobApplicationsRouter = express.Router();
 
-export default jobsApplicationRouter;
+jobApplicationsRouter.route('/').post(createJobApplication).get(getAllJobApplications);
+
+export default jobApplicationsRouter;

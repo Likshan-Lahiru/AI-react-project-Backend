@@ -28,6 +28,6 @@ const jobsSchema = new Schema({
       },
 })
 
-const Job = mongoose.model('job', jobsSchema);
+const Job = mongoose.model('Job', jobsSchema);
 
 export default Job;
