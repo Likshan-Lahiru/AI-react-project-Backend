@@ -8,18 +8,20 @@ export const getAllJobApplications = async (req, res, next) => {
       .exec();
     return res.status(200).json(jobApplications);
   } catch (error) {
-    return res.status(500).json("Internal server error");
+    next(error);
   }
 };
 
-
 export const createJobApplication = async (req, res, next) => {
-    try{
-    const jobApplication = req.body;
+  try {
+    const jobApplication = JobApplicationDTO.safeParse(req.body);
+    if (!jobApplication.success) {
+      throw new ValidationError(jobApplication.error);
+    }
+
     await JobApplication.create(jobApplication);
-    }
-    catch(error){
-      console.log(error);
-      return res.status(500).json("Internal server error");
-    }
+    return res.status(201).send();
+  } catch (error) {
+    next(error);
+  }
 };
