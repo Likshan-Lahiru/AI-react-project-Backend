@@ -12,6 +12,7 @@ export const getAllJobApplications = async (req, res, next) => {
   }
 };
 
+
 export const createJobApplication = async (req, res, next) => {
     try{
     const jobApplication = req.body;
