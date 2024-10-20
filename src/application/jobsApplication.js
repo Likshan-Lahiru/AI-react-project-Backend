@@ -21,7 +21,7 @@ export const createJobApplication = async (req, res, next) => {
       throw new ValidationError(jobApplication.error);
     }
 
-    await JobApplication.create(jobApplication);
+    await JobApplication.create({ ...jobApplication.data, userId: "123" });
     return res.status(201).send();
   } catch (error) {
     next(error);

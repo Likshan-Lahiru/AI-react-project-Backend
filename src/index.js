@@ -3,16 +3,13 @@ import jobsRouter from "./api/jobs.js";
 import "dotenv/config"
 import { connectionDB } from "./persistance/db.js";
 import jobsApplicationRouter from "./api/jobsApplications.js";
-
+import cors from "cors";
 
 
 
 const app = express();
-
-
-
-
 app.use(express.json());
+app.use(cors({origin: "http://localhost:5173"}));
 
 connectionDB();
 

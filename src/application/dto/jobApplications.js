@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const JobApplicationDTO = z.object({
-  userId: z.string().nonempty(),
   fullName: z.string().nonempty(),
   answers: z.string().nonempty().array().optional(),
   job: z.string().nonempty(),
