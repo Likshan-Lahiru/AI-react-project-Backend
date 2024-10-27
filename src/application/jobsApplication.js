@@ -1,7 +1,7 @@
 import JobApplication from "../persistance/entity/jobsApplications.js"
 import { JobApplicationDTO } from "./dto/jobApplications.js";
 import ValidationError from "../domain /errors/validation-error.js";
-import NotFoundError from "../domain /errors/not-found-error.js";
+import { clerkClient } from "@clerk/clerk-sdk-node";
 
 export const getAllJobApplications = async (req, res, next) => {
   try {
@@ -16,12 +16,15 @@ export const getAllJobApplications = async (req, res, next) => {
 
 export const createJobApplication = async (req, res, next) => {
   try {
+   
+    const { userId } = req.auth;
+
     const jobApplication = JobApplicationDTO.safeParse(req.body);
     if (!jobApplication.success) {
       throw new ValidationError(jobApplication.error);
     }
 
-    await JobApplication.create({ ...jobApplication.data, userId: "123" });
+    await JobApplication.create({ ...jobApplication.data, userId: userId });
     return res.status(201).send();
   } catch (error) {
     next(error);
