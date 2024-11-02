@@ -6,6 +6,7 @@ import AuthorizationMiddleware from "./middleware/authorization-middleware.js";
 const jobsRouter = express.Router();
 
 
+
 jobsRouter
   .route("/")
   .get(getAllJobs)
