@@ -13,8 +13,11 @@ export const getAllJobs = async (req, res, next) => {
 };
 
 export const createJob = async (req, res, next) => {
+
   try {
     const job = JobDTO.safeParse(req.body);
+    console.log(job);
+    
     if (!job.success) {
       throw new ValidationError(job.error);
     }
@@ -22,7 +25,9 @@ export const createJob = async (req, res, next) => {
     await Job.create(job.data);
     return res.status(201).send();
   } catch (error) {
+    console.log(error);
     next(error);
+
   }
 };
 
