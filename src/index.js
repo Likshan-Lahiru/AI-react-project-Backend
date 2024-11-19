@@ -8,7 +8,7 @@ import globalErrorHandlingMiddleware from "./api/middleware/global-error-handlin
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "https://ai-react-project-backend.onrender.com" }));
+app.use(cors({ origin: "http://localhost:5173" }));
 
 connectionDB();
 
