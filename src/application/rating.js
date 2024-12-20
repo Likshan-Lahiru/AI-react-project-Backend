@@ -10,7 +10,7 @@ export default async function generateRating(jobApplicationId) {
     const completion = await client.chat.completions.create(
         {
             messages:[{role:"user",content}],
-            model: "ft:gpt-3.5-turbo-0125:stemlink:fullstacktutorial:AVERxq2j"
+            model: "ft:gpt-3.5-turbo-0125:stemlink:fullstacktutorial:AgRGWWGQ"
         }
     );
     const response = JSON.parse(completion.choices[0].message.content);
@@ -22,6 +22,3 @@ export default async function generateRating(jobApplicationId) {
     }
     await JobApplication.findOneAndUpdate({_id:jobApplicationId},{rating:response.rate})
 }
-
-
-
